@@ -54,10 +54,49 @@ public class App {
                     System.out.print("Passos : " );
                     passo = leitor.nextInt();
                     int movimento = move(tartarugaLinha,tartarugaColuna,direcao,passo);
-                        if((direcao == 0) || (direcao == 2)){
+                        if(direcao == 0){
+                            if(caneta) {
+                                for (int contador = tartarugaColuna; contador < movimento; contador++) {
+                                    tabuleiro[tartarugaLinha][contador] = 'x';
+                                }
+                                tartarugaColuna=movimento;
+
+                            }else {
+                                tartarugaColuna = movimento;
+                            }
+                        }if(direcao == 1){
+                        if(caneta) {
+                            for (int contador = tartarugaLinha; contador < movimento; contador++) {
+                                tabuleiro[contador][tartarugaColuna] = 'x';
+                            }
+                            tartarugaLinha=movimento;
+
+                        }else {
+                            tartarugaLinha = movimento;
+                        }
+                    }
+                    if(direcao == 2){
+                        if(caneta) {
+                            for (int contador = tartarugaColuna;contador >movimento ; contador--) {
+                                tabuleiro[tartarugaLinha][contador] = 'x';
+                            }
+                            tartarugaColuna=movimento;
+
+                        }else {
                             tartarugaColuna = movimento;
-                        }else{
-                            tartarugaLinha = movimento;}
+                        }
+                    }if(direcao == 3){
+                        if(caneta) {
+                            for (int contador = tartarugaLinha;contador>movimento; contador--) {
+                                tabuleiro[contador][tartarugaColuna] = 'x';
+                            }
+                            tartarugaLinha=movimento;
+
+                        }else {
+                            tartarugaLinha = movimento;
+                        }
+                    }
+
                     break;
                 }
                 case 6:{
@@ -70,10 +109,8 @@ public class App {
                 }
             }
         }
-
-
-
     }
+
     static void imprimeTabuleiro(char[][] tab){
         for (char[] chars : tab) {
             for (char aChar : chars) {
